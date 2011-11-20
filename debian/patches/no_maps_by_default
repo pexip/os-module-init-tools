@@ -1,0 +1,11 @@
+--- a/depmod.c
++++ b/depmod.c
+@@ -79,7 +79,7 @@ struct module_search
+ 
+ static char sym_prefix; /* used for -P option */
+ static unsigned int skipchars; /* prefix target part of basedir to skip over */
+-static unsigned int make_map_files = 1; /* default to on */
++static unsigned int make_map_files = 0; /* default to off */
+ static unsigned int force_map_files = 0; /* default to on */
+ 
+ #define SYMBOL_HASH_SIZE 1024

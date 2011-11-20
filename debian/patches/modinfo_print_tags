@@ -1,0 +1,56 @@
+When using "-F param", print also the parameters without an explicit
+description which would otherwise be shown when displaying all fields.
+
+--- a/modinfo.c
++++ b/modinfo.c
+@@ -54,17 +54,48 @@ static void print_tag(const char *tag, s
+ 		      const char *filename, char sep)
+ {
+ 	int j;
++	int wantparm = 0;
+ 	unsigned int taglen = strlen(tag);
++	struct param *i, *params = NULL;
+ 
+ 	if (streq(tag, "filename")) {
+ 		printf("%s%c", filename, sep);
+ 		return;
+ 	}
+ 
++	if (streq(tag, "parm"))
++		wantparm = 1;
++
+ 	for (j = 0; j < tags->cnt; j++) {
+ 		const char *info = tags->str[j];
+-		if (strncmp(info, tag, taglen) == 0 && info[taglen] == '=')
+-			printf("%s%c", info + taglen + 1, sep);
++		if (wantparm) {
++			/* We expect this in parm and parmtype. */
++			char *colon = strchr(info, ':');
++
++			/* We store these for handling at the end */
++			if (strstarts(info, "parm=") && colon) {
++				i = add_param(info + strlen("parm="), &params);
++				i->param = colon + 1;
++				continue;
++			}
++			if (strstarts(info, "parmtype=") && colon) {
++				i = add_param(info + strlen("parmtype="), &params);
++				i->type = colon + 1;
++				continue;
++			}
++		} else
++			if (strncmp(info, tag, taglen) == 0 && info[taglen] == '=')
++				printf("%s%c", info + taglen + 1, sep);
++	}
++
++	/* Now show parameters. */
++	for (i = params; i; i = i->next) {
++		if (!i->param)
++			printf("%s (%s)%c", i->name, i->type, sep);
++		else if (i->type)
++			printf("%s%s (%s)%c", i->name, i->param, i->type, sep);
++		else
++			printf("%s%s%c", i->name, i->param, sep);
+ 	}
+ }
+ 

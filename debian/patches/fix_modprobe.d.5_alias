@@ -1,0 +1,13 @@
+Add the modprobe.d name to allow man(1) to find both pages.
+
+--- a/doc/modprobe.conf.sgml
++++ b/doc/modprobe.conf.sgml
+@@ -23,6 +23,8 @@
+   <refmeta>
+     <refentrytitle>modprobe.conf</refentrytitle>
+     <manvolnum>5</manvolnum>
++    <refentrytitle>modprobe.d</refentrytitle>
++    <manvolnum>5</manvolnum>
+   </refmeta>
+   <refnamediv>
+     <refname>modprobe.d</refname><refname>modprobe.conf</refname> <refpurpose>Configuration directory/file for modprobe</refpurpose>

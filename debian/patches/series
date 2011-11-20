@@ -1,0 +1,14 @@
+# fixes to be pushed upstream
+fix_modprobe.d.5_alias
+modinfo_print_tags
+
+# features to be pushed upstream
+blacklist-warn.diff
+
+# Debian integration
+aliases_conf
+manpages_fr
+
+# modified defaults
+no_maps_by_default
+ubuntu-maps_by_default

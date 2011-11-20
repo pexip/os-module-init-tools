@@ -1,0 +1,13 @@
+Index: reconcile-fileids/depmod.c
+===================================================================
+--- reconcile-fileids.orig/depmod.c	2011-06-15 18:34:42.000000000 +0100
++++ reconcile-fileids/depmod.c	2011-06-15 18:34:53.000000000 +0100
+@@ -79,7 +79,7 @@
+ 
+ static char sym_prefix; /* used for -P option */
+ static unsigned int skipchars; /* prefix target part of basedir to skip over */
+-static unsigned int make_map_files = 0; /* default to off */
++static unsigned int make_map_files = 1; /* default to on */
+ static unsigned int force_map_files = 0; /* default to on */
+ 
+ #define SYMBOL_HASH_SIZE 1024

@@ -1,0 +1,4 @@
+lsmod /bin/
+insmod modprobe rmmod depmod modinfo /sbin/
+../debian/depmod.d/* /etc/depmod.d
+../debian/modprobe.d/* /etc/modprobe.d
