@@ -2,9 +2,11 @@ Source: module-init-tools
 Section: admin
 Priority: important
 XSBC-Original-Maintainer: Marco d'Itri <md@linux.it>
-Maintainer: Scott James Remnant <scott@ubuntu.com>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Scott James Remnant <scott@ubuntu.com>
 Standards-Version: 3.8.4
 Build-Depends: debhelper (>= 7.3.15ubuntu2), docbook-to-man
+XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
 
 Package: module-init-tools
 Architecture: any
